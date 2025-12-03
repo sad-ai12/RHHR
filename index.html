@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TopCashback BD</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+  }
+  .container {
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  }
+  h1 { text-align: center; margin-bottom: 20px; }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #ffce00;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+  }
+  .dashboard { display: none; }
+  .dashboard h2 { text-align: center; margin-bottom: 15px; }
+  .dashboard p { margin: 5px 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="login">
+    <h1>লগইন করুন</h1>
+    <input type="text" id="username" placeholder="ইউজারনেম">
+    <input type="password" id="password" placeholder="পাসওয়ার্ড">
+    <button onclick="login()">লগইন</button>
+  </div>
+
+  <div class="dashboard">
+    <h2>ড্যাশবোর্ড</h2>
+    <p>ব্যালেন্স: <span id="balance">0</span> টাকা</p>
+    <p>ডেইলি ইনকাম: <span id="dailyIncome">0</span> টাকা</p>
+    <p>র‍্যাঙ্ক: <span id="rank">LV1</span></p>
+    <button onclick="logout()">লগআউট</button>
+  </div>
+</div>
+
+<script>
+  // ডেমো ইউজার ডেটা
+  const demoUser = {
+    username: "user1",
+    password: "1234",
+    balance: 1000,
+    dailyIncome: 50,
+    rank: "LV2"
+  };
+
+  function login() {
+    const u = document.getElementById('username').value;
+    const p = document.getElementById('password').value;
+    if(u === demoUser.username && p === demoUser.password){
+      document.querySelector('.login').style.display = 'none';
+      document.querySelector('.dashboard').style.display = 'block';
+      document.getElementById('balance').textContent = demoUser.balance;
+      document.getElementById('dailyIncome').textContent = demoUser.dailyIncome;
+      document.getElementById('rank').textContent = demoUser.rank;
+    } else {
+      alert('ইউজারনেম বা পাসওয়ার্ড ভুল!');
+    }
+  }
+
+  function logout() {
+    document.querySelector('.dashboard').style.display = 'none';
+    document.querySelector('.login').style.display = 'block';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+  }
+</script>
+
+</body>
+</html>
